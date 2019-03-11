@@ -1,7 +1,55 @@
 ;(function (){
     'use strict'
 
-    let a = 'whh';
-    console.log(a);
+    let name, nickname;
+
+    name = 'whh';
+    nickname = name;
+
+    let name, nickname;
+
+    name = 'whh';
+    nickname = name;
+
+    let name , nickname;
+
+    name = 'whh';
+    nickname = name;
+
+    let name, nickname;
+
+    name = 'whh';
+    nickname = name;
+
+    let name , nickname;
+
+    name = 'whh' ;
+    nickname = name;
+
+    let name , nickname;
+
+    name = 'whh';
+    nickname = name;
+
+    let name, nickname;
+
+    name = 'whh';
+    nickname = name;
+
+    let name, nickname;
+
+    name = 'whh';
+    nickname = name;
+
+    let name, nickname;
+
+    name = 'whh';
+    nickname = name;
+
+    let name , nickname;
+
+    name = 'whh';
+    nickname = name;
+    
     
 })();
