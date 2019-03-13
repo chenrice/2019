@@ -1,0 +1,127 @@
+<script>
+    let arr = [
+        1,
+        2,
+        666,
+    ];
+
+    console.log(arr[2]);
+
+    let arr1 = [
+        1,
+        2,
+        [666],
+    ];
+
+    console.log(arr1[2][0]);
+
+    let arr2 = [
+        [
+            [1, 5],
+            ['whh', 666],
+        ],
+    ];
+
+    console.log(arr2[0][1][1]);
+
+    let arr3 = [
+        [
+            [100, 'eeee'],
+            [
+                2, 'yo', [666],
+            ],
+        ],
+    ];
+
+
+    console.log(arr3[0][1][2][0]);
+
+    let obj = {
+        a: 1,
+        b: 2,
+        c: 666,
+    };
+
+
+    console.log(obj.c);
+
+
+
+    let obj1 = {
+        a: 1,
+        b: {
+            yo: {
+                em: '6',
+                ha: 666,
+            },
+        },
+    };
+    
+    console.log(obj1.b.yo.ha);
+    
+    let obj2 ={
+        a: 1,
+        b: {
+            x: [
+                2,{yo: [666]},
+            ],
+        },
+    };
+
+
+    console.log(obj2.b.x[1].yo[0]);
+
+    let obj3 = {
+        a: [ 3, 5],
+        B: ['yo',1],
+    };
+
+    console.log(obj3.a.length);
+    console.log(obj3.B.length);
+
+    let obj4 = {
+        a: {foo: 2},
+        yo: [3, 5],
+        b: {
+            la: {
+                name: 'wood',
+                x:[5, 'a', 'c'],
+                muhah:['bob', 'huahua'],
+                length: 100,
+            },
+        },
+    };
+    
+    console.log(obj4.yo.length + obj4.b.la.x.length);
+
+    let obj5 = {
+        la: 'ha',
+        v: 2,
+        p: [2, 5],
+        b: {
+          a: {
+              name: 'white',
+              yo: [5, 'a', 'c'],
+              length: 100,
+              map: true,
+          },  
+        },
+    };
+    
+    console.log(obj5.la);
+    console.log(obj5.b.a.name);
+
+    let a;
+    let b;
+
+    a = 5;
+    b = 5;
+
+
+    console.log(a + b);
+    
+    
+    
+
+
+</script>
