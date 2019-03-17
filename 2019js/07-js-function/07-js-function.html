@@ -1,0 +1,42 @@
+<script>
+    // function add(a, b) {
+    //     return a + b;
+
+    // };
+
+    // let result = add(111,2);
+
+
+    // console.log(result);
+
+    let arr1 = [
+            '王花花',
+            '刘备备',
+            '李拴蛋',
+            '赵可爽',
+        ];
+
+    let arr2 = [
+            'a',
+            'b',
+            'c',
+            'd',
+        ];
+
+
+    function breaker(bedAss,list) { // 默认值
+        
+        for (let i = 0; i < list.length; i++) {
+            let it = list[i];
+
+            if (it === bedAss) {
+                break;
+            };
+
+            console.log(it);
+
+        }
+    }
+
+    breaker('c',arr2);
+</script>
