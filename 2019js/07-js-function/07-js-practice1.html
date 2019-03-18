@@ -1,0 +1,90 @@
+<script>
+
+    let list = ['a1', 'a2', ['b1', 'b2', ['c1', 'c2', 'c3'], 'b3'], 'a3'];
+
+    function lister(arr, level = 0) {
+        let filtered = {};
+
+        for (let i = 0; i < arr.length; i++) {
+            let it = arr[i];
+
+            if (typeof it == 'string') {
+
+                if (typeof filtered[level] !== "object") {
+                    level++;
+                    filtered[level] = [];
+
+                } else {
+                    filtered[level].push(it)
+                }
+
+            } else {
+                lister(it, level, filtered);
+            }
+            console.log(it);
+        }
+    }
+
+    let filtered = lister(list);
+
+    console.log(filtered);
+
+    let arr = [
+        {
+            name: '王花花',
+            salary: 100,
+        },
+        {
+            name: '李拴蛋',
+            salary: 200,
+        },
+        {
+            name: '牛备备',
+            salary: 300,
+        },
+    ];
+    let arr1 = [
+        {
+            name: '王花花',
+            salary: 100,
+        },
+        {
+            name: '李拴蛋',
+            salary: 200,
+        },
+        {
+            name: '牛备备',
+            salary: 300,
+        },
+    ];
+
+
+    function getRich(list,much) {
+
+        let result = [];
+
+        for (let i = 0; i < list.length; i++) {
+            let it = list[i];
+
+            if (it.salary <= much) {
+                continue;
+            }
+            result.push(it);
+        }
+
+        return result;
+    }
+
+    console.log(getRich(arr1,100));
+    
+
+
+
+
+
+
+
+
+
+
+</script>
