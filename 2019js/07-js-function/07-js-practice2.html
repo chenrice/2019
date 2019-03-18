@@ -1,0 +1,153 @@
+<script>
+
+    let arr = [
+        '王花花',
+        '刘备备',
+        '李拴蛋',
+        '赵可爽',
+    ];
+
+    let arr1 = [
+        'A',
+        'B',
+        'C',
+        'D',
+    ];
+
+    let arr2 = [1, 4, 6, 9, 10];
+    let arr3 = [2, 5, 7, 9, 15];
+
+    let arr4 = ['Yo', 'Em', 1, 'La', 4, 8, 'Ha', 11, 5];
+
+    let arr5 = [
+        {
+            name: '王花花',
+            salary: 100,
+        },
+        {
+            name: '李拴蛋',
+            salary: 200,
+        },
+        {
+            name: '牛备备',
+            salary: 300,
+        },
+    ];
+
+    let arr6 = [
+        { name: '王花花' },
+        { name: '王拴蛋' },
+        { name: '牛备备' },
+    ];
+
+
+    function breaker(list, name) {
+        for (let i = 0; i < list.length; i++) {
+            let it = list[i];
+
+            if (it == name) {
+                continue;
+            }
+            console.log(it);
+        }
+    }
+
+    breaker(arr, '刘备备');
+
+
+    function string(list) {
+        let str = '';
+
+        for (let i = 0; i < list.length; i++) {
+            let it = list[i];
+
+            str += it;
+        }
+
+        console.log(str);
+    }
+
+    string(arr1);
+
+    function fuh(list, dh = ',') {
+        let str = '';
+
+        for (let i = 0; i < list.length; i++) {
+            let it = list[i];
+
+            if (i == list.length - 1) {
+                dh = '';
+            }
+
+
+            str += it + dh;
+        }
+
+        console.log(str);
+    }
+
+    fuh(arr, '-');
+
+    function math(list) {
+        let sum = 0;
+        for (let i = 0; i < list.length; i++) {
+            let it = list[i];
+
+            sum += it;
+
+        }
+
+        console.log(sum);
+    }
+
+    math(arr3);
+
+    function mathematics(list, type) {
+        let sum = 0;
+        for (let i = 0; i < list.length; i++) {
+            let it = list[i];
+
+            if (typeof it == type) {
+                continue;
+            }
+            sum += it;
+
+        }
+
+        console.log(sum);
+    }
+
+    mathematics(arr4, 'number');
+
+    function zs(list, nb) {
+        let sz = [];
+        for (let i = 0; i < list.length; i++) {
+            let it = list[i];
+
+            if (it.salary <= nb) {
+                continue;
+            }
+            sz.push(it);
+        }
+        console.log(sz);
+    }
+
+    zs(arr5, 200);
+
+    function searchName(list,who) {
+        let min = [];
+    for (let i = 0; i < list.length; i++) {
+        let it = list[i];
+
+        if(!it.name.startsWith(who)){
+            continue;
+        }
+        min.push(it);
+    }
+
+    console.log(min);
+    
+    }
+
+    searchName(arr6,'王');
+</script>
