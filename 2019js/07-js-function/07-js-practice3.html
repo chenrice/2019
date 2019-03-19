@@ -1,0 +1,176 @@
+<script>
+    function add(a, b) {
+
+        return a + b;
+
+    }
+
+    console.log(add(1, 3));
+
+    function printer(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            let it = arr[i];
+            console.log(it);
+        }
+
+
+
+
+    }
+    printer(['a', 'b', 'c']);
+
+
+    let list = [
+        '王花花',
+        '刘备备',
+        '李拴蛋',
+        '赵可爽',
+    ];
+
+    function printed(a, b) {
+        for (let i = 0; i < a.length; i++) {
+            let it = a[i];
+
+            if (it == b) {
+                continue;
+            }
+            console.log(it);
+
+        }
+    }
+
+
+    printed(list, '李拴蛋');
+
+    let list1 = [
+        '王花花',
+        '李拴蛋',
+        '赵可爽',
+    ];
+
+    function glue(arr) {
+        let result = '';
+
+        for (let i = 0; i < arr.length; i++) {
+
+            let it = arr[i];
+
+            result += it;
+        }
+
+        return result;
+        console.log(result);
+
+    }
+
+
+    glue(list1);
+
+    let list2 = [
+        '王花花',
+        '李拴蛋',
+        '赵可爽',
+    ];
+
+    function glue1(arr, b) {
+        let result = '';
+        for (let i = 0; i < arr.length; i++) {
+
+            let it = arr[i];
+
+            if (i == arr.length - 1) {
+                b = '';
+            }
+
+            result += it + b;
+
+        }
+        console.log(result);
+
+    }
+
+    glue1(list, ', ');
+
+    function yoMaker(length) {
+        let result = [];
+
+        for (let i = 0; i < length; i++) {
+
+            result.push('yo');
+
+        }
+
+        console.log(result);
+
+        return result;
+
+
+    }
+
+    yoMaker(100);
+
+    function arrayMaker(length) {
+        let result = [];
+
+        for (let i = 0; i < length; i++) {
+
+            result.push(i + 1)
+
+
+        }
+
+        console.log(result);
+
+        return result;
+
+
+    }
+
+    arrayMaker(10);
+
+    function evenMaker(max) {
+        let result = [];
+
+        for (let i = 0; i < max; i++) {
+
+            let even = i * 2;
+
+            if (even > max) {
+                break;
+            }
+            result.push(even)
+        }
+
+        console.log(result);
+
+    }
+
+    evenMaker(4);
+
+
+    let list5 = [
+        'abb',
+        'bcc',
+        'cdd',
+        'daa',
+    ];
+
+    function search (arr,b) {
+        let result = [];
+        for(let i = 0; i < arr.length; i++){
+        
+        let it = arr[i];
+
+        if(!it.includes(b)){
+            continue;
+        }
+        result.push(it);
+        }
+
+        console.log(result);
+        
+    }
+
+    search(list5, 'd');
+
+</script>
