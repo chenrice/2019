@@ -1,0 +1,51 @@
+<script>
+    function a(arg) {
+        arg();            
+    }
+
+    function b(){
+        console.log("I'm b");
+        
+    }
+
+    function c() {
+        console.log("I'm c");
+        
+    }
+
+    a(c);
+
+
+    let arr = ['a', 'b', 'c'];
+
+    // function printer(list) {
+    //     for(let i = 0; i < list.length; i++){
+    //         let it = list[i];
+            
+    //         console.log(it);
+            
+    //     }
+    // }
+    // printer(arr);
+
+    function iterator(list,fn) {
+        for(let i = 0; i < list.length; i++){
+            fn(list[i]);
+        
+        }
+    }
+
+    iterator(arr,function (it){
+        console.log(it);
+        
+    });
+
+    let sum = '';
+    iterator(arr,function (it){
+        sum += it;
+    console.log(sum);
+            
+    });
+    
+
+</script>
