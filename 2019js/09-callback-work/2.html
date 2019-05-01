@@ -1,0 +1,78 @@
+<style>
+:root {
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+.board {
+    font-size: 2rem;
+    color: #f00;
+    background: #000;
+    padding: 10px;
+    border: 5px solid;
+    display: inline-block;
+    opacity: 1;
+}
+
+.inner {
+    opacity: 1;
+}
+[hidden] {
+    display: none !important;
+}
+
+
+</style>
+
+
+
+<div class="board">
+    <div class="inner">修脚<span class="counter"></span></div>
+</div>
+
+
+<script>
+
+    let count = 0;
+    const board = document.querySelector('.board');
+    const inner = board.querySelector('.inner')
+    const counter = inner.querySelector('.counter');
+
+    let size = 1;
+    let pedicure = true;
+
+    setInterval(() => {
+        if(getComputedStyle(inner).opacity == 1){
+            inner.style.opacity = 0;
+            board.style.borderColor = 'transparent';
+        } else{
+            inner.style.opacity = 1;
+            board.style.borderColor = 'inherit';
+
+            count ++;
+            
+            if(size < 3) {
+                size++;
+            } else {
+                size = 1;
+            }
+            
+            board.style.fontSize = 1 * size + 'rem'
+
+            if(pedicure) {
+                text = '修脚';
+            }  else {
+                text = '贴膜'
+            }
+
+            inner.innerText = text;
+
+            pedicure = !pedicure;
+
+        }
+
+
+        counter.innerText = count + '用户人数';
+    }, 500);
+
+</script>

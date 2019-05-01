@@ -1,0 +1,99 @@
+<script>
+    /**
+    数字数组处理（基础函数）
+    @param {Array} arr
+    @param {Function} fn
+    @return {*}
+    */
+
+
+    function eachNumber(arr, fn) {
+        for (let i = 0; i < arr.length; i++) {
+            fn(arr[i]);
+        }
+    }
+
+
+    function evenNumber(arr) {
+        let result = [];
+        eachNumber(arr, function (it) {
+            if (it % 2) {
+                return;
+            }
+            result.push(it);
+
+
+        });
+        console.log(result);
+
+        return result
+
+    }
+
+
+    function oddNumber(arr) {
+        let result = [];
+        eachNumber(arr, function (it) {
+            if (!(it % 2)) {
+                return;
+            }
+            result.push(it);
+        });
+        return result;
+    }
+
+
+    function sum(arr) {
+        let sum = 0;
+        eachNumber(arr, it => {
+            sum += it;
+        });
+
+        return sum;
+    }
+
+
+    function max(arr) {
+        let result;
+        // 内部变量undefined
+        eachNumber(arr, it => {
+            //让第一个数存成 result = 1 return 直接返回;
+            if (result === undefined) {
+                result = it;
+                return;
+            }
+            //it 一直在循环 所以it 大于1 就让 result = it 最好循环的数;
+            if (it > result) {
+                console.log(result);
+                console.log(it);
+                result = it;
+            }
+        });
+ 
+        return result;
+
+    }
+
+    function min(arr) {
+        let result;
+        // 内部变量undefined
+        eachNumber(arr, it => {
+            //让第一个数存成 result = 1 return 直接返回;
+            if (result === undefined) {
+                result = it;
+                return;
+            }
+//it 一直在循环 所以it 小于1 就让 result = it 最好循环的数;
+            if (it < result) {
+                console.log(it);
+                
+                result = it;
+            }
+        });
+
+        return result;
+    }
+
+
+
+</script>

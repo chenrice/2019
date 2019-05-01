@@ -1,0 +1,33 @@
+:root {
+    font-family: sans-serif;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container{
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slider {
+    position: relative;
+    overflow: hidden;
+    height: 600px;
+    
+}
+
+.item {
+    position: absolute;
+    display: block;
+    transition: all 500ms ease-in-out;
+    /* opacity: 1; */
+    width: 100%;
+}
+
+.slider a:first-child {
+    z-index: 1;
+}

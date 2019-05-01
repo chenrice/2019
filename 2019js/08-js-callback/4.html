@@ -1,0 +1,46 @@
+<script>
+
+function eachStr(arr,fn){
+    for(let i = 0; i < arr.length; i++){
+        let it = arr[i];
+        fn(it);
+    }
+}
+
+function getYo(arr,key){
+    let result = [];
+    eachStr(arr,it=>{
+        if(it== 'yo'){
+            result.push(it);
+        }
+    });
+    return result;
+}
+
+
+function shortStr(arr){
+    let result = [];
+    eachStr(arr,it => {
+        if(it.length == 1){
+            result.push(it);
+        }
+    });
+    return result;
+}
+
+
+function join(arr){
+    let result = '';
+    eachStr(arr, it =>{
+        result += it;
+    });
+    return result;
+}
+
+
+
+
+
+
+
+</script>

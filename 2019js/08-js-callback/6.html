@@ -1,0 +1,50 @@
+<script>
+    function eachStr(arr, fn) {
+        for (let i = 0; i < arr.length; i++) {
+            fn(arr[i]);
+        }
+    }
+
+
+    function getYo(arr) {
+        let result = [];
+        eachStr(arr, it => {
+            if (it.includes('y')) {
+
+                result.push(it);
+            }
+        });
+        return result;
+    }
+
+
+    function shortStr(arr){
+        let result = [];
+        eachStr(arr, it =>{
+            if(it.length == 2){
+                result.push(it);
+            }
+        });
+        return result;
+    }
+
+    function join(arr){
+        let result = '';
+        eachStr(arr, it =>{
+            result += it;
+        });
+        return result;
+    }
+
+
+    function search(arr,key){
+        let result = [];
+        eachStr(arr, it =>{
+            if(!it.includes(key)){
+                result.push(it);
+            }
+        });
+        return result;
+    }
+
+</script>
