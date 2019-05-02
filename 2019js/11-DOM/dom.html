@@ -1,0 +1,50 @@
+<html>
+<body>
+
+<div id="a" class="a">
+    <div class="a1"></div>
+    <div class="a2"></div>
+</div>
+<div class="b">
+    <div class="b1"></div>
+    <div class="b2"></div>
+</div>
+<div class="c"></div>
+
+
+<script>
+
+let html = document.querySelector('html'); 
+
+let html2 = document.documentElement;
+
+let body = document.body;
+
+let a = document.getElementById('a');
+
+let a2 = document.getElementsByClassName('a')[0];
+
+let a3 = document.querySelector('#a');
+
+let div = document.getElementsByTagName('div')[5];
+
+console.log(html);
+
+console.log(html2);
+
+console.log(html === html2);
+
+console.log(body);
+
+console.log(a);
+console.log(a2[0]);
+console.log(a === a2);
+console.log(a3);
+
+console.log(div);
+
+
+</script>
+
+</body>
+</html>
