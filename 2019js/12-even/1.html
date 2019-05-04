@@ -1,0 +1,54 @@
+<style>
+    #a {
+        display: inline-block;
+        width: 10em;
+        height: 10em;
+        background: gray;
+        opacity: 1;
+    }
+
+    [hidden] {
+        display: none !important;
+    }
+</style>
+
+
+<div id="a"></div>
+<!-- <button id="toggle">显示/隐藏</button> -->
+
+
+<script>
+    let a = document.getElementById('a');
+
+
+    a.addEventListener('mouseenter', () => {
+
+        console.log('yo');
+        a.style.opacity = 0;
+    });
+    
+    a.addEventListener('mouseleave', () => {
+
+        console.log('yo');
+        a.style.opacity = 1;
+    });
+
+
+    window.addEventListener('keyup',()=>{
+
+       
+        
+        a.style.opacity = 0;
+    })
+    
+    window.addEventListener('keydown',(even)=>{
+
+        console.log(even.key);
+        
+        a.style.opacity = 1;
+    })
+    console.log();
+
+
+
+</script>

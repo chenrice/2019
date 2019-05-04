@@ -1,0 +1,81 @@
+<style>
+
+.toggle {
+    font-size: 20px;
+    padding: 5px;
+}
+
+.dropdown{
+    background: rgba(0, 0, 0, .8);
+    width: 100px;
+}
+
+.dropdown a{
+    display: block;
+    padding: 5px;
+    margin:1px;
+    text-decoration: none;
+    color: #fff;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    transition: all .2s;
+}
+
+.dropdown a:hover {
+    background: rgba(0, 0, 0, .1);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+</style>
+
+<button class="toggle">查看更多</button>
+
+<div class="dropdown">
+    <a href="#">关于我们</a>
+    <a href="#">公司简介</a>
+    <a href="#">招商加盟</a>
+    <a href="#">联系方式</a>
+    <a href="#">扫一扫</a>
+</div>
+
+<script>
+    const toggle = document.querySelector('.toggle');
+    const dropdown = document.querySelector('.dropdown');
+
+
+    toggle.addEventListener('mouseenter',()=>{
+
+        dropdown.hidden = 0;
+
+    });
+    
+    toggle.addEventListener('mouseleave',()=>{
+
+        dropdown.hidden = 1;
+
+    });
+
+    toggle.addEventListener('click',()=>{
+
+        dropdown.hidden = !dropdown.hidden;
+
+    });
+
+
+    window.addEventListener('keydown',(event)=>{
+
+        console.log(event);
+        
+        if(event.key == 'q' &&  event.ctrlKey){
+
+            dropdown.hidden = !dropdown.hidden;
+        }
+
+    });
+
+
+</script>

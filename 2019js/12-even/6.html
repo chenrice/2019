@@ -1,0 +1,60 @@
+<style>
+    .dropdown {
+        display: inline-block;
+        background: #666;
+        color: #fff;
+        opacity: 0;
+    }
+
+    .dropdown a {
+        color: inherit;
+        display: block;
+        min-width: 100px;
+        text-decoration: none;
+        padding: 5px 10px;
+    }
+</style>
+
+
+
+<div class="dropdown">
+    <a href="#">A</a>
+    <a href="#">B</a>
+    <a href="#">C</a>
+    <a href="#">D</a>
+</div>
+
+<button class="trigger">更多</button>
+
+
+<script>
+    const dropdown = document.querySelector('.dropdown');
+    const trigger = document.querySelector('.trigger');
+
+
+
+
+    document.body.addEventListener('click', (e) => {
+        let target = e.target;
+
+
+        
+        
+        if (target === trigger) {
+            console.log(dropdown.style.opacity);
+            if (dropdown.style.opacity < 1) {
+                dropdown.style.opacity  = 1;
+                return;
+            } else {
+                dropdown.style.opacity = 0;
+            }
+        }
+
+        if(!target.closest('.dropdown')){
+            dropdown.style.opacity = 0;
+        }
+
+    });
+
+
+</script>
