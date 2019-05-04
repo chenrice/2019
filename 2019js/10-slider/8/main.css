@@ -1,0 +1,27 @@
+:root {
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.slider {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    
+}
+
+.item {
+    position: absolute;
+    display: block;
+    transition: all .5s;
+    width: 100%;
+}
