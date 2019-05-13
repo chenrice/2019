@@ -1,0 +1,88 @@
+<style>
+    
+    .popOut {
+        padding: 10px;
+        display: inline-block;
+        position: fixed;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+        border-radius: 3px;
+        margin: 5px;
+        background: #fff;
+        /* opacity: 0; */
+        
+    }
+
+    [hidden]{
+        display: none !important;
+    }
+
+</style>
+
+
+
+<button data-popout='Yo .. yo yo...' >yo</button>
+<button data-popout='Ho .. ho ho...' >ha</button>
+
+
+
+<script>
+
+       let triggers = new Set();
+     
+
+
+    boot();
+
+    function boot() {
+        bindEvents();
+    }
+
+
+    function bindEvents() {
+        document.body.addEventListener('click', e => {
+            let el = e.target;
+            let content = el.dataset.popout;
+
+            // e.target.dataset.popout.style.opacity = 1;
+            if (content) {
+                show(el,content);
+                triggers.add(el);
+            } else {
+                hideAll();
+            }
+
+        });
+        console.log(triggers);
+
+    }
+    //@param {}
+
+    function show(button,content){
+        if(!button.$popout){
+                let popout = document.createElement('div');
+                popout.classList.add('popOut');
+                popout.innerText = content;
+                button.$popout = popout;
+                document.body.appendChild(popout);
+                }else {
+                    button.$popout.hidden = false;
+                }
+    }
+
+    // function hide(button){
+    //     button.$popout.hidden = true;
+    // }
+
+
+    function hideAll(){
+        triggers.forEach(button =>{
+            button.$popout.hidden = true;
+        });
+    }
+
+    
+
+    
+
+</script>
+

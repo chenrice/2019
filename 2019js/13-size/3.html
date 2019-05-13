@@ -1,0 +1,143 @@
+<style>
+    .ricePopup {
+        background: #fff;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+        /* display: none; */
+        position: fixed;
+        border: 3px solid #000;
+        font-size: 30px;
+        z-index: 1000;
+        top: 0;
+    }
+
+    .riceMask {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        z-index: 99;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, .3);
+    }
+
+    [hidden] {
+        display: none !important;
+    }
+</style>
+
+<style>
+
+</style>
+
+<div id="trigger" class="a">收藏</div>
+
+<div id="popup" class="b">确定要收藏吗？</div>
+<div>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quas commodi quidem impedit? Voluptatibus
+    reprehenderit voluptates placeat laudantium est officia minima ullam exercitationem maxime, eum, mollitia architecto
+    nemo magnam natus?
+    Officiis eveniet ad, nostrum velit laboriosam tempore autem illum dolore cumque iusto et adipisci, quidem nesciunt
+    unde sint expedita. Expedita id voluptates sit recusandae asperiores ipsa sed blanditiis. Cumque, dicta.
+    Consequatur optio distinctio rem laudantium at excepturi fugit perferendis quae pariatur numquam. Non hic alias
+    aliquam expedita, laudantium dolore blanditiis. Dolores at, repellendus ratione explicabo eligendi ipsum corporis
+    voluptatibus iure.
+    Nostrum minima voluptatem itaque a non, repudiandae, consequuntur possimus illo excepturi blanditiis dolorem
+    accusamus eaque repellendus similique neque cupiditate quibusdam qui rerum vero. Dolores libero laborum, nam minima
+    molestiae illo.
+    Vero laudantium nulla doloremque numquam quo molestias dolor accusantium, expedita fugiat eos, vel laboriosam iste!
+    Quidem, iusto molestias. Minus facere vel odit debitis quia accusamus odio officia deleniti consectetur ab.
+    Dolorem delectus non molestiae accusamus eligendi voluptates, iusto autem itaque porro aliquam sit voluptatem
+    dignissimos similique quos, voluptate modi, nesciunt illum quasi maxime obcaecati accusantium? Odio dolorum
+    repellendus officia numquam.
+    Sapiente libero vitae ab velit dolorem? Eveniet tempore rem minus eligendi earum aperiam reiciendis quaerat iste
+    dignissimos molestias, ratione consequatur cumque beatae illum tempora rerum fugit assumenda autem veritatis
+    possimus.
+    Maxime quod cupiditate fuga illum culpa labore voluptatem amet recusandae quas magni voluptatibus possimus omnis
+    ullam cum minima deleniti iusto aliquid ab tenetur perferendis, debitis ea? Dolores aliquam vero ut.
+    Quas, reprehenderit voluptatem dicta rerum modi repellendus. Exercitationem dolorem sunt doloremque deleniti
+    necessitatibus sint eum libero? Ab, sunt reprehenderit quam enim explicabo aperiam labore reiciendis, consequatur
+    natus adipisci totam quis.
+    Molestiae neque possimus voluptate voluptas autem veritatis voluptatum porro reprehenderit molestias aliquam ratione
+    exercitationem culpa ut animi qui ipsa dolores officia pariatur consectetur eius minima architecto, necessitatibus
+    placeat consequatur. Error!
+</div>
+
+
+
+
+
+<script>
+    let trigger, popup, mask; //全局变量
+
+    //用户的类
+    boot('.a', '.b');
+
+
+    function boot(aSelector, bSelector) {
+        trigger = document.querySelector(aSelector);
+        popup = document.querySelector(bSelector);
+
+
+        //拿到类
+        initPopup(); //隐藏类 在类后面追加样式和类
+        initMask();
+        bindOpen();
+        bindClose();
+        console.log(popup.style.left);
+
+
+    }
+
+    function bindOpen() {
+        trigger.addEventListener('click', () => {
+            setVisible(true);
+            rePosition('center', -30 );
+        });
+    }
+
+    function bindClose() {
+        mask.addEventListener('click', () => {
+            setVisible(false);
+        });
+
+        window.addEventListener('keyup', (e) => {
+            if (e.code = 'scape') {
+                setVisible(false);
+            }
+
+        })
+    }
+
+    function setVisible(visible = false) {
+        popup.hidden = mask.hidden = !visible;
+    }
+
+
+    function initPopup() {
+        popup.hidden = true;
+        popup.classList.add('ricePopup');
+    }
+
+    function rePosition(postiion = 'center',yOffset = 0 , xOffset = 0) {
+
+
+            console.log(popup.style.left);
+
+
+
+
+        popup.style.left = window.innerWidth / 2 - popup.offsetWidth / 2 + xOffset + 'px';
+
+        popup.style.top = window.innerHeight / 2 - popup.offsetHeight / 2 + yOffset + 'px';
+
+    }
+
+    function initMask() {
+        mask = document.createElement('div');
+        mask.classList.add('riceMask');
+        mask.hidden = true;
+        document.body.appendChild(mask);
+    }
+
+
+</script>

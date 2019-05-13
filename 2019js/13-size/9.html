@@ -1,0 +1,141 @@
+<style>
+    img {
+        max-width: 100%;
+        display: block;
+    }
+
+    .container {
+        margin: 0 auto;
+        max-width: 800px;
+    }
+
+    .slider {
+        position: relative;
+        overflow: hidden;
+        height: 600px;
+
+    }
+
+
+    .item {
+        position: absolute;
+        display: block;
+        transition: all .5s;
+        width: 800px;
+    }
+</style>
+
+
+
+<div class="container">
+    <div class="slider">
+        <div class="item"><img src="./img/1.png" alt=""></div>
+        <div class="item"><img src="./img/2.png" alt=""></div>
+        <div class="item"><img src="./img/3.png" alt=""></div>
+        <div class="item"><img src="./img/4.png" alt=""></div>
+        <div class="item"><img src="./img/5.png" alt=""></div>
+    </div>
+</div>
+
+
+<script>
+    const parents = document.querySelector('.slider');
+    const items = parents.querySelectorAll('.item');
+    let lastIndex = items.length - 1;
+    let current = 0;
+    let config = {
+        mode: 'side',
+        interval: 1500,
+    }
+
+
+    boot({
+        // mode: 
+    });
+
+    function boot(custom) {
+        config = Object.assign({},config,custom);
+
+
+        if (config.mode == 'side') {
+                side();
+            } else {
+                hideAll();
+                fade();
+            }
+
+        setInterval(() => {
+            increment();
+
+            if (config.mode == 'side') {
+                side();
+            } else {
+                hideAll();
+                fade();
+            }
+        }, config.interval);
+        console.log(config.mode);
+        
+    }
+
+    function fade() {
+        let prev = getPrev();
+        let nowCurrent = getNowCurrent();
+        // let next = getNext();
+
+        prev.style.opacity = '0';
+        nowCurrent.style.opacity = '1';
+        // next.style.opacity = '0'
+    }
+
+    function side() {
+        let prev = getPrev();
+        let nowCurrent = getNowCurrent();
+        let next = getNext();
+
+        prev.style.left = -prev.offsetWidth + 'px';
+        nowCurrent.style.left = '0';
+        next.style.left = next.offsetWidth + 'px';
+
+        prev.style.zIndex = 0;
+        nowCurrent.style.zIndex = 2;
+    }
+
+    function hideAll(){
+        items.forEach(e =>{
+            e.style.opacity = 0;
+        });
+    }
+
+    function increment() {
+        if (current < lastIndex) {
+            current++;
+        } else {
+            current = 0;
+        }
+    }
+
+    function getPrev() {
+        if (current > 0) {
+            return items[current - 1];
+        } else {
+            return items[lastIndex];
+        }
+    }
+
+
+    function getNowCurrent() {
+        return items[current];
+    }
+
+    function getNext() {
+        if (current < lastIndex) {
+            return items[current + 1];
+        } else {
+            return items[0];
+        }
+    }
+
+
+
+</script>

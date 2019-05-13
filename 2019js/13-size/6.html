@@ -1,0 +1,196 @@
+<style>
+    #a {
+        padding: 10px;
+        font-size: 20px;
+        display: block;
+        margin: 100px 100px;
+    }
+
+    .ricePop {
+        position: fixed;
+        border: 2px solid;
+        padding: 5px 10px;
+        background: #fff;
+        font-size: 30px;
+        z-index: 1000;
+        overflow: visible;
+    }
+
+    .riceMask {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .5);
+        z-index: 999;
+    }
+
+    [hidden] {
+        display: none !important;
+    }
+
+
+    .box {
+        width: 140px;
+        /* position: relative; */
+        /* height: 150px; */
+        margin: 0 auto;
+    }
+
+    .box button {
+        /* position: absolute; */
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+    }
+</style>
+
+
+<button id="a">收藏 </button>
+<div id="b">确定要收藏吗？<button id="c">关闭</button>
+    <form action="#">
+        <div>name<input type="text"></div>
+        <div>password<input type="password"></div>
+        <div><button>submit</button></div>
+    </form>
+    <div class="box">
+        <button data-direction='top-left'>上左</button>
+        <button data-direction='top'>上中</button>
+        <button data-direction='top-right'>上右</button>
+        <button data-direction='left'>中左</button>
+        <button data-direction='center'>中心</button>
+        <button data-direction='right'>中右</button>
+        <button data-direction='bottom-left'>左下</button>
+        <button data-direction='bottom'>中下</button>
+        <button data-direction='bottom-right'>右下</button>
+    </div>
+
+</div>
+
+<div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa!</div>
+
+
+<script>
+
+    let collection, handClose, popup, mask,config ;
+    const defaultConfig = {
+        position: 'center',
+        offsetX: 0,
+        offsetY: 0,
+    }
+
+
+
+
+    boot('#a', '#b',);
+
+
+    function boot(aSelection, bSelection,custom= {} ) {
+        collection = document.querySelector(aSelection);
+        popup = document.querySelector(bSelection);
+        handClose = popup.querySelector('#c');
+        
+
+        loadConfig(custom);
+        initPopup();
+        initMask();
+        bindOpen();
+        bindClose();
+
+        console.log(config);
+        
+
+        popup.addEventListener('click', e => {
+            repositionPop(e.target.dataset.direction);
+
+        });
+
+
+    }
+
+    function loadConfig(custom){
+        config = Object.assign({},defaultConfig,custom);
+    }
+
+
+    function bindOpen() {
+        collection.addEventListener('click', () => {
+            isVisible(true);
+            repositionPop('center');
+        });
+
+    }
+
+    function bindClose() {
+        mask.addEventListener('click', () => {
+            isVisible(false);
+        });
+
+        handClose.addEventListener('click', () => {
+            isVisible(false);
+        });
+
+
+        window.addEventListener('keyup', (e) => {
+            console.log(e);
+
+            if (e.key === 'Escape') {
+                isVisible(false);
+            }
+        });
+    }
+
+    function isVisible(visible = false) {
+        popup.hidden = mask.hidden = !visible;
+    }
+
+    function initPopup() {
+        popup.hidden = true;
+        popup.classList.add('ricePop');
+    }
+
+    
+        function repositionPop (position = 'center', offsetX = 0, offsetY = 0) {
+        let width = popup.offsetWidth;
+        let height = popup.offsetHeight;
+        let windowWidth = window.innerWidth;
+        let windowHeight = window.innerHeight;
+        if(!position.includes('-')){
+            if(position == 'left' || position == 'right')
+                position += '-centerY';
+            else if(position == 'top' || position == 'bottom')
+                position += '-centerX';
+            else
+                position = 'centerX-centerY'
+        }
+        if(position.includes('centerX'))
+            popup.style.left = windowWidth / 2 - width / 2 + 'px';
+        if(position.includes('centerY'))
+            popup.style.top = windowHeight / 2 - height / 2 + 'px';
+        if(position.includes('top'))
+            popup.style.top = 0 + 'px';
+        if(position.includes('left'))
+            popup.style.left = 0 + 'px';
+        if(position.includes('right')){
+            popup.style.left = 'auto';
+            popup.style.right = 0 + 'px';
+        } 
+        if(position.includes('bottom')){
+            popup.style.top = 'auto';
+            popup.style.bottom = 0 + 'px';
+        }   
+    }
+    
+
+    function initMask() {
+        mask = document.createElement('div');
+        mask.classList.add('riceMask');
+        mask.hidden = true;
+        document.body.appendChild(mask);
+    }
+
+
+
+
+</script>

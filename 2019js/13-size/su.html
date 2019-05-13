@@ -1,0 +1,153 @@
+<style>
+    :root {
+        font-size: 15px;
+    }
+    .riceTrigger {
+        font-size: 30px;
+        font-weight: 500;
+        padding: 10px;
+        margin: 50px auto;
+        display: block;
+
+    }
+
+    .ricePopup {
+        position: fixed;
+        font-size: 30px;
+        font-weight: 500;
+        padding: 10px;
+        border: 2px solid;
+        /* max-width: 30%; */
+        text-align: center;
+        z-index: 1000;
+        background: #fff;
+        color: #f00;
+        opacity: 1;
+    }
+
+    .ricePopup:first-child{
+        transition: all .2s;
+        font-size: 2rem;
+    }
+
+    .riceMask {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .5);
+        z-index: 800;
+    }
+
+
+    [hidden] {
+        display: none !important;
+    }
+</style>
+
+
+<meta charset="UTF-8">
+<button class="a">点我发财！！</button>
+<div class="b" hidden><span>恭喜您中了100亿美元!!</span></div>
+<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ab laborum doloribus atque optio, dolorum dignissimos
+    ullam inventore?
+    Pariatur quidem deserunt eligendi et veniam cum accusantium tempore, dolores neque reiciendis cumque sunt velit
+    architecto laudantium impedit?
+    Expedita laborum quibusdam dignissimos reiciendis et autem nihil distinctio minus fugiat quasi modi, odio quae
+    porro, asperiores explicabo.
+    Eaque culpa quod reiciendis libero sunt sed? Tenetur laborum necessitatibus, quasi reiciendis atque deserunt esse a
+    minima deleniti.
+    Alias ipsam explicabo non molestiae nulla libero, saepe quasi maiores, magni at voluptatum voluptates rerum sed.
+    Modi, laborum?
+    Error aspernatur magnam at dolor nostrum voluptatem nisi ut tempore, dicta nulla, inventore deserunt iure
+    reprehenderit? At, inventore.</div>
+
+
+<script>
+    let trigger, popup, mask;
+    let size = 1;
+
+
+    boot('.a', '.b');
+
+    function boot(a, b) {
+        trigger = document.querySelector(a);
+        popup = document.querySelector(b);
+
+        initPopup();
+        initMask()
+        show();
+        close();
+    }
+
+
+    function show() {
+        trigger.addEventListener('click', () => {
+            isVisible(true);
+            reposition('center',-100);
+            twinkle ();
+        });
+    }
+
+    function close() {
+        mask.addEventListener('click', () => {
+            isVisible(false);
+        });
+
+        window.addEventListener('keyup', e =>{
+            if(e.key == 'Escape'){
+                isVisible(false);
+            }
+        });
+    }
+
+    function isVisible(visible = false) {
+        return mask.hidden = popup.hidden = !visible;
+        console.log(isVisible(visible));
+    }
+
+
+    function twinkle (){
+        setInterval(() => {
+            if(popup.firstChild.style.opacity >= 1){
+                popup.firstChild.style.opacity = 0;
+            } else {
+                popup.firstChild.style.opacity = 1;
+            }
+
+            fat();
+            reposition('center',-100);
+        }, 500);
+    }
+
+    function fat(){
+        if(size < 20){
+           size++;
+        } else {
+           size = 1;
+        }
+        
+        
+       popup.style.fontSize = size + 'rem';
+       console.log(size);
+    }
+
+
+    function initPopup() {
+        popup.classList.add('ricePopup');
+        trigger.classList.add('riceTrigger');
+    }
+
+    function initMask() {
+        mask = document.createElement('div');
+        mask.classList.add('riceMask');
+        mask.hidden = true;
+        document.body.appendChild(mask);
+    }
+
+    function reposition(position = center, offsetY = 0, offsetX = 0) {
+        popup.style.left = window.innerWidth / 2 - popup.offsetWidth / 2 + offsetX +  'px';
+        popup.style.top = window.innerHeight / 2 - popup.offsetHeight / 2 + offsetY + 'px';
+    }
+</script>
